@@ -1,0 +1,28 @@
+﻿@model Laptop_Store.Models.Laptop
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Laptop</h4>
+    <hr />
+    <div class="row">
+        <div class="card">
+            <img class="bd-placeholder-img card-img-top" width="100" src="@Model.ImageUrl">
+            <div class="card-body">
+                <p class="card-text"><strong>@Model.Name</strong></p>
+                <p class="card-text"><strong>@Model.Description</strong></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <strong>@Model.Price.ToString("c")</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LaptopId">Edit</a> |
+    <a asp-action="Index" asp-route-id="@Model.SellerId">Back to List</a>
+</div>

@@ -1,0 +1,56 @@
+﻿@model Laptop_Store.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<h1>OrderDetails</h1>
+
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.qty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Laptop)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Laptop.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order.FirstName) @Html.DisplayFor(model => model.Order.LastName)
+            @Html.DisplayFor(model => model.Order.AddressLine1) <br />
+            @Html.DisplayFor(model => model.Order.AddressLine2) <br />
+            @Html.DisplayFor(model => model.Order.PinCode) <br />
+            @Html.DisplayFor(model => model.Order.City) <br />
+            @Html.DisplayFor(model => model.Order.State) <br />
+            @Html.DisplayFor(model => model.Order.PhoneNumber) <br />
+            @Html.DisplayFor(model => model.Order.Email) <br />
+            @Html.DisplayFor(model => model.Order.OrderPlaced)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Laptop.Seller)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Laptop.Seller.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.OrderDetailId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

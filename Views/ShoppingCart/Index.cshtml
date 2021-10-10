@@ -1,0 +1,47 @@
+﻿@model Laptop_Store.Models.ShoppingCartViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shopping Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Selected Quantity
+            </th>
+            <th>Laptop</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ShoppingCart.ShoppingCartItems) {
+        <tr>
+            <td class="text-center">@item.qty</td>
+            <td class="text-left">@item.Laptop.Name</td>
+            <td class="text-right">@item.Laptop.Price.ToString("c")</td>
+            <td class="text-right">
+                @((item.qty * item.Laptop.Price).ToString("c"))
+            </td>
+            <td>
+                <a type="button" class="btn btn-danger" asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-laptopId="@item.Laptop.LaptopId">X</a>
+            </td>
+        </tr>
+}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.ShoppingCartTotal.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-outline-primary" asp-controller="Order" asp-action="Checkout">Checkout Now!</a>
+</div>

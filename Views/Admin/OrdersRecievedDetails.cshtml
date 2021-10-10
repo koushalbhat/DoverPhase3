@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Laptop_Store.Models.OrderDetail>
+
+@{
+    ViewData["Title"] = "OrdersRecievedDetails";
+}
+
+<h1>OrdersRecievedDetails</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laptop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laptop.Seller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Laptop.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Laptop.Seller.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.FirstName)
+                </td>
+                <td>
+                    <a asp-action="OrderDetails" asp-route-id="@item.OrderDetailId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a type="button" class="btn btn-primary" asp-controller="Admin" asp-action="Index">Customer Details</a>
+<a type="button" class="btn btn-success" asp-controller="Admin" asp-action="SellerDetails">Seller Details</a>

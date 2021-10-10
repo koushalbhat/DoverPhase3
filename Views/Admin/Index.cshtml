@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Laptop_Store.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Customers Registered</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                <a asp-action="CustomerDetails" asp-route-id="@item.CustomerId">Details</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a type="button" class="btn btn-primary" asp-controller="Admin" asp-action="SellerDetails">Seller Details</a>
+<a type="button" class="btn btn-success" asp-controller="Admin" asp-action="OrdersRecievedDetails">Orders Recieved</a> <br />
+<a type="button" class="btn btn-danger" asp-controller="Admin" asp-action="Login">Logout</a>
